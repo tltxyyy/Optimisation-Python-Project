@@ -1,6 +1,6 @@
 # Optimisation Problem Python Project
-- In this school project, the aim is to help a ficticious pizza chain restaurant that is facing problems inventory delivery planning and rising costs, to optimise the best delivery route.
-- This was a team project and I contributed mainly in the vehicle routing problem.
+- In this school project, the aim is to help a ficticious pizza chain restaurant that is facing problems of inventory delivery planning and rising costs, to optimise the best delivery route.
+- This was a team project which I contributed mainly in the mathematical formulation and coding the vehicle routing problem.
 
 ## Data
 As the pizza restaurant in question is a fictitious company, we do not have the actual data belonging to it. We used a Polish pizza restaurant’s order dataset (https://www.kaggle.com/janusznoszczynski/polish-pizza-restaurants-orders-history), which contains information about the amount of pizza sold from 2016 to 2018, as a basis for demand and generated our own 2020 demand dataset, with the demand separated by different outlets. This is to ensure that our fictitious dataset is representative of actual industry data.
