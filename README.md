@@ -1,42 +1,47 @@
 # Optimisation Problem Python Project
+- In this school project, the aim is to help a ficticious pizza chain restaurant that is facing problems inventory delivery planning and rising costs, to optimise the best delivery route.
+- This was a team project and I contributed mainly in the vehicle routing problem.
 
-Notations:
-𝑁 is the outlets, where 𝑁 = {1, 2, . . . , 𝑛}
-is the set of nodes with 𝑉 𝑉 = [0]∪ 𝑁
-is the set of arcs, with 𝐴 𝐴 = {(𝑖, 𝑗) ∈ 𝑉2: 𝑖 ≠ 𝑗}
-is the distance to travel over the arc 𝐶𝑖𝑗 (𝑖, 𝑗) ∈ 𝐴
-is the capacity of the truck 𝑄
-is the total travelling capacity of the truck 𝐻
-is the amount that has to be delivered to the customer, 𝑞𝑖 𝑖 ∈ 𝑁
-Decision Variables:
-is a binary variable taking value 1 if the vehicle travels from Node i to j. Otherwise, 𝑥𝑖𝑗 𝑥𝑖𝑗
-takes value 0
-The amount of pizza type 1 delivered after visiting vertex 𝑢𝑖 𝑖
-The amount of pizza type 2 delivered after visiting vertex 𝑢2𝑖 𝑖
-The amount of pizza type 3 delivered after visiting vertex 𝑢3𝑖 𝑖
-The amount of distance covered by truck after visiting vertex 𝑒𝑖 𝑖
-Objective min
-𝑖,𝑗∈𝐴
-Σ 𝑐𝑖𝑗𝑥𝑖𝑗
-Subject to
-(1)
-𝑗∈𝑉 𝑗≠𝑖
-Σ 𝑥𝑖𝑗 = 1 𝑖 ∈ 𝑁
-(2)
-𝑖∈𝑉 𝑖≠𝑗
-Σ 𝑥𝑖𝑗 = 1 𝑗 ∈ 𝑁
-𝑖𝑓 𝑥 (3) 𝑖𝑗 = 1 ⇒ 𝑢𝑖 + 𝑞𝑗 = 𝑢𝑗 𝑖, 𝑗 ∈ 𝐴: 𝑗 ≠ 0, 𝑖 ≠ 0
-𝑢 (4) 𝑖 ≥ 𝑞𝑖 𝑖 ∈ 𝑁
-𝑖𝑓 𝑥 (5) 𝑖𝑗 = 1 ⇒ 𝑢2𝑖 + 𝑞2𝑗 = 𝑢2𝑗 𝑖, 𝑗 ∈ 𝐴: 𝑗 ≠ 0, 𝑖 ≠ 0
-𝑢2 (6) 𝑖 ≥ 𝑞2𝑖 𝑖 ∈ 𝑁
-𝑖𝑓 𝑥 (7) 𝑖𝑗 = 1 ⇒ 𝑢3𝑖 + 𝑞3𝑗 = 𝑢3𝑗 𝑖, 𝑗 ∈ 𝐴: 𝑗 ≠ 0, 𝑖 ≠ 0
-𝑢3 (8) 𝑖 ≥ 𝑞3𝑖 𝑖 ∈ 𝑁
-3500𝑢 (9) 𝑖 + 2800𝑢2𝑖 + 2450𝑢3𝑖 ≤ 𝑄 𝑖 ∈ 𝑁
-𝑖𝑓 𝑥 (10) 𝑖𝑗 = 1 ⇒ 𝑒𝑖 + 𝑐𝑖𝑗 = 𝑒𝑗 𝑖, 𝑗 ∈ 𝐴: 𝑗 ≠ 0, 𝑖 ≠ 0
-𝑒 (11) 𝑖 ≥ 𝑐𝑖𝑗 𝑖 ∈ 𝑁, 𝑖, 𝑗 ∈ 𝐴
-𝑒 (12) 𝑖 ≤ 𝐻 𝑖 ∈ 𝑁
-𝑥 (13) 𝑖𝑗 ∈ {0, 1} 𝑖, 𝑗 ∈ 𝐴
-14
-In this formulation, the objective function seeks to minimize the total traveling distance
-covered by the delivery truck. Constraints (1) and (2) limit the truck to a single visit to each
-outlet.
+## Data
+As the pizza restaurant in question is a fictitious company, we do not have the actual data belonging to it. We used a Polish pizza restaurant’s order dataset (https://www.kaggle.com/janusznoszczynski/polish-pizza-restaurants-orders-history), which contains information about the amount of pizza sold from 2016 to 2018, as a basis for demand and generated our own 2020 demand dataset, with the demand separated by different outlets. This is to ensure that our fictitious dataset is representative of actual industry data.
+
+In order to determine the distance from one location to another, we performed the calculation of the respective distance values on R. Since the computation of distance based on Euclidean geometry may give a false impression of the actual distance required to travel, the route distances were obtained based on Google’s Distance Matrix API with the help of the ggmap package in R.
+
+## Vehicle Routing Problem
+The Vehicle Routing Problem is one that seeks to design an optimal route for the vehicle(s) to a set of destinations given certain constraints. This model is commonly used to minimise the overall transportation cost.
+
+In this problem, we aim to find the most optimal route for the delivery truck to deliver different kinds of pizzas to the different outlets given capacity, fuel constraints. There will also be a resource allocation problem that will be solved within the model as the different pizzas take up different capacities within the delivery truck.
+
+**Notations:**
+
+𝑁 is the outlets, where 𝑁 = {1, 2, . . . , 𝑛}.
+
+𝑉 is the set of nodes with  𝑉 = [0]∪ 𝑁.
+
+𝐴 is the set of arcs, with 𝐴 = {(𝑖, 𝑗) ∈ 𝑉2: 𝑖 ≠ 𝑗}.
+
+𝐶𝑖𝑗 is the distance to travel over the arc (𝑖, 𝑗) ∈ 𝐴
+
+𝑄 is the capacity of the truck
+
+𝐻 is the total travelling capacity of the truck.
+
+𝑞𝑖 is the amount that has to be delivered to the customer, 𝑖 ∈ 𝑁
+
+**Decision Variables:**
+
+𝑥𝑖𝑗 is a binary variable taking value 1 if the vehicle travels from Node i to j. Otherwise, 𝑥𝑖𝑗 takes value 0.
+
+𝑢𝑖 is the amount of pizza type 1 delivered after visiting vertex 𝑖.
+
+𝑢2𝑖 is the amount of pizza type 2 delivered after visiting vertex 𝑖.
+
+𝑢3𝑖 is the amount of pizza type 3 delivered after visiting vertex 𝑖.
+
+𝑒𝑖 is the amount of distance covered by truck after visiting vertex 𝑖.
+
+<img width="698" alt="image" src="https://user-images.githubusercontent.com/69724535/218639852-872382a5-18e5-451f-bcaa-dd9865c108b8.png">
+
+In this formulation, the objective function seeks to minimize the total traveling distance covered by the delivery truck. Constraints (1) and (2) limit the truck to a single visit to each outlet. Constraints (3) to (9) are counting accumulated pizzas delivered to ensure that the number of pizzas delivered does not exceed the truck capacity. Constraints (3), (4), (9) are for hawaiian pizza flavour, (5), (6), (9) for pepperoni pizza flavour and (7), (8), (9) for cheesy pizza flavour. Constraint (9) limits the amount of pizzas the truck can carry according to capacity Q and the different pre-packed box sizes of different pizza types. Constraints (10), (11) and (12) are counting the distance traveled by the truck to ensure that the total distance covered does not exceed the travelling capacity. Finally, Constraint (13) limits x_ij to a binary variable.
+
+
