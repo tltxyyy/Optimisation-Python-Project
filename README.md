@@ -12,6 +12,7 @@ The Vehicle Routing Problem is one that seeks to design an optimal route for the
 
 In this problem, we aim to find the most optimal route for the delivery truck to deliver different kinds of pizzas to the different outlets given capacity, fuel constraints. There will also be a resource allocation problem that will be solved within the model as the different pizzas take up different capacities within the delivery truck.
 
+### Mathematical Formulation
 **Notations:**
 
 𝑁 is the outlets, where 𝑁 = {1, 2, . . . , 𝑛}.
@@ -44,4 +45,8 @@ In this problem, we aim to find the most optimal route for the delivery truck to
 
 In this formulation, the objective function seeks to minimize the total traveling distance covered by the delivery truck. Constraints (1) and (2) limit the truck to a single visit to each outlet. Constraints (3) to (9) are counting accumulated pizzas delivered to ensure that the number of pizzas delivered does not exceed the truck capacity. Constraints (3), (4), (9) are for hawaiian pizza flavour, (5), (6), (9) for pepperoni pizza flavour and (7), (8), (9) for cheesy pizza flavour. Constraint (9) limits the amount of pizzas the truck can carry according to capacity Q and the different pre-packed box sizes of different pizza types. Constraints (10), (11) and (12) are counting the distance traveled by the truck to ensure that the total distance covered does not exceed the travelling capacity. Finally, Constraint (13) limits x_ij to a binary variable.
 
-
+### Conclusion and Limitations
+- Refer to the jupyter notebook for optimal solution.
+- The model assumes that the same transportation route is undertaken by the vehicles each time it goes from location i to j and traffic will not be a significant concern in affecting amount of fuel used.
+- Fuel efficiency is assumed to be constant throughout despite the reduction in truck loads after each stop.
+- It is assumed that the delivery truck can deliver all the goods in the same day.
