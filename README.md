@@ -15,7 +15,7 @@ The Vehicle Routing Problem is one that seeks to design an optimal route for the
 
 In this problem, we aim to find the most optimal route for the delivery truck to deliver different kinds of pizzas to the different outlets given capacity, fuel constraints. There will also be a resource allocation problem that will be solved within the model as the different pizzas take up different capacities within the delivery truck.
 
-#### Mathematical Formulation
+#### 2.1 Mathematical Formulation
 **Notations:**
 
 𝑁 is the outlets, where 𝑁 = {1, 2, . . . , 𝑛}.
