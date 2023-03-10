@@ -44,12 +44,15 @@ In this problem, we aim to find the most optimal route for the delivery truck to
 
 𝑒𝑖 is the amount of distance covered by truck after visiting vertex 𝑖.
 
-<img width="698" alt="image" src="https://user-images.githubusercontent.com/69724535/218639852-872382a5-18e5-451f-bcaa-dd9865c108b8.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/69724535/218639852-872382a5-18e5-451f-bcaa-dd9865c108b8.png">
 
 In this formulation, the objective function seeks to minimize the total traveling distance covered by the delivery truck. Constraints (1) and (2) limit the truck to a single visit to each outlet. Constraints (3) to (9) are counting accumulated pizzas delivered to ensure that the number of pizzas delivered does not exceed the truck capacity. Constraints (3), (4), (9) are for hawaiian pizza flavour, (5), (6), (9) for pepperoni pizza flavour and (7), (8), (9) for cheesy pizza flavour. Constraint (9) limits the amount of pizzas the truck can carry according to capacity Q and the different pre-packed box sizes of different pizza types. Constraints (10), (11) and (12) are counting the distance traveled by the truck to ensure that the total distance covered does not exceed the travelling capacity. Finally, Constraint (13) limits x_ij to a binary variable.
 
 ### 3.Conclusion and Limitations
-- Refer to the jupyter notebook for optimal solution.
+- Refer to the jupyter notebook for the full optimal solution.
+- In brief, the model recommends the truck to take four trips, following the given route to minimise transportation cost
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/69724535/224264427-7723b25d-bee0-42cb-bf22-c3307acffef0.png">
+
 - The model assumes that the same transportation route is undertaken by the vehicles each time it goes from location i to j and traffic will not be a significant concern in affecting amount of fuel used.
 - Fuel efficiency is assumed to be constant throughout despite the reduction in truck loads after each stop.
 - It is assumed that the delivery truck can deliver all the goods in the same day.
